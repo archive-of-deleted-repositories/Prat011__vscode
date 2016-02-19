@@ -6,6 +6,7 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"publisher": "vscode",
+	"aiKey":"***REMOVED***",
 	"engines": {
 		"vscode": "*"
 	},
