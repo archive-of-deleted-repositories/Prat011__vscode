@@ -6,8 +6,8 @@
 
 import {TPromise} from 'vs/base/common/winjs.base';
 import {IThreadService} from 'vs/workbench/services/thread/common/threadService';
-import {IModeService} from 'vs/editor/common/services/modeService';
 import {MainContext} from './extHostProtocol';
+import {MainThreadLanguages} from './mainThreadLanguages';
 
 export class ExtHostLanguages {
 
@@ -24,17 +24,3 @@ export class ExtHostLanguages {
 	}
 }
 
-export class MainThreadLanguages {
-
-	private _modeService: IModeService;
-
-	constructor(
-		@IModeService modeService: IModeService
-	) {
-		this._modeService = modeService;
-	}
-
-	_getLanguages(): TPromise<string[]> {
-		return TPromise.as(this._modeService.getRegisteredModes());
-	}
-}
