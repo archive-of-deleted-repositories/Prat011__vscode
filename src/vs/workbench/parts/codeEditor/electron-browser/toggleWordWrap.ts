@@ -28,8 +28,8 @@ class ToggleWordWrapAction extends EditorAction {
 	}
 
 	public run(accessor: ServicesAccessor, editor: ICommonCodeEditor): void {
-		let configurationEditingService = accessor.get(IConfigurationEditingService);
-		let messageService = accessor.get(IMessageService);
+		const configurationEditingService = accessor.get(IConfigurationEditingService);
+		const messageService = accessor.get(IMessageService);
 
 		let wrappingInfo = editor.getConfiguration().wrappingInfo;
 		let newWordWrap: boolean;
