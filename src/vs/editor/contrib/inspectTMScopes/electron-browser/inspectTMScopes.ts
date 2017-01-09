@@ -187,6 +187,7 @@ class InspectTMScopesWidget extends Disposable implements IContentWidget {
 	public dispose(): void {
 		this._isDisposed = true;
 		this._editor.removeContentWidget(this);
+		super.dispose();
 	}
 
 	public getId(): string {
@@ -197,7 +198,6 @@ class InspectTMScopesWidget extends Disposable implements IContentWidget {
 		dom.clearNode(this._domNode);
 		this._domNode.appendChild(document.createTextNode(nls.localize('inspectTMScopesWidget.loading', "Loading...")));
 		this._grammar.then((grammar) => this._compute(grammar, position));
-		this._editor.layoutContentWidget(this);
 	}
 
 	private _compute(grammar: IGrammar, position: Position): void {
@@ -262,6 +262,7 @@ class InspectTMScopesWidget extends Disposable implements IContentWidget {
 
 
 		this._domNode.innerHTML = result;
+		this._editor.layoutContentWidget(this);
 	}
 
 	private _decodeMetadata(metadata: number): IDecodedMetadata {
