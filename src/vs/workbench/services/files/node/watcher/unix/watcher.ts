@@ -16,3 +16,8 @@ export interface IWatcherRequest {
 export interface IWatcherService {
 	watch(request: IWatcherRequest): TPromise<void>;
 }
+
+export interface IFileWatcher {
+	startWatching(): () => void;
+	addFolder(folder: string): void;
+}

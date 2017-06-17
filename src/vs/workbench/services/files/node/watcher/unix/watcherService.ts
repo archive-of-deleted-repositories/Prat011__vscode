@@ -12,8 +12,9 @@ import uri from 'vs/base/common/uri';
 import { toFileChangesEvent, IRawFileChange } from 'vs/workbench/services/files/node/watcher/common';
 import { IWatcherChannel, WatcherChannelClient } from 'vs/workbench/services/files/node/watcher/unix/watcherIpc';
 import { FileChangesEvent } from 'vs/platform/files/common/files';
+import { IFileWatcher } from "vs/workbench/services/files/node/watcher/unix/watcher";
 
-export class FileWatcher {
+export class FileWatcher implements IFileWatcher {
 	private static MAX_RESTARTS = 5;
 
 	private isDisposed: boolean;
@@ -63,6 +64,7 @@ export class FileWatcher {
 				if (this.restartCounter <= FileWatcher.MAX_RESTARTS) {
 					this.errorLogger('[FileWatcher] terminated unexpectedly and is restarted again...');
 					this.restartCounter++;
+					// TODO: What do we do for multi-root here?
 					this.startWatching();
 				} else {
 					this.errorLogger('[FileWatcher] failed to start after retrying for some time, giving up. Please report this as a bug report!');
@@ -74,6 +76,10 @@ export class FileWatcher {
 			client.dispose();
 			this.isDisposed = true;
 		};
+	}
+
+	public addFolder(folder: string): void {
+		console.log('addFolder: ' + folder);
 	}
 
 	private onRawFileEvents(events: IRawFileChange[]): void {
