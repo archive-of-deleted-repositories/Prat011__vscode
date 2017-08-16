@@ -7,7 +7,7 @@
 import * as errors from 'vs/base/common/errors';
 import { MainThreadErrorsShape } from '../node/extHost.protocol';
 
-export class MainThreadErrors extends MainThreadErrorsShape {
+export class MainThreadErrors implements MainThreadErrorsShape {
 
 	public onUnexpectedExtHostError(err: any): void {
 		errors.onUnexpectedError(err);
