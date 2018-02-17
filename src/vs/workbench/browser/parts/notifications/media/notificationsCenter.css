@@ -5,7 +5,6 @@
 
 .monaco-workbench > .notifications-center {
 	position: absolute;
-	width: 600px;
 	z-index: 1000;
 	right: 8px;
 	bottom: 30px; /* above status bar */
