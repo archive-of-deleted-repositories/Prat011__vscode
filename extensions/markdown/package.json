@@ -1,11 +1,11 @@
 {
 	"name": "vscode-markdown",
-	"displayName": "VS Code Markdown",
-	"description": "Markdown for VS Code",
-	"enableProposedApi": true,
+	"displayName": "%displayName%",
+	"description": "%description%",
 	"version": "0.2.0",
-	"publisher": "Microsoft",
+	"publisher": "vscode",
 	"aiKey": "***REMOVED***",
+	"enableProposedApi": true,
 	"engines": {
 		"vscode": "^1.20.0"
 	},
