@@ -23,7 +23,6 @@ steps:
     service dbus start
 
 - script: |
-    git checkout -f master
     yarn
     npm run gulp -- electron-x64
 
