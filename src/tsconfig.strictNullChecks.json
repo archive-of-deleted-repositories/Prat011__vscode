@@ -1,0 +1,14 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"strictNullChecks": true
+	},
+	"include": [
+		"./typings",
+		"./vs/base/common/iterator.ts"
+	],
+	"exclude": [
+		"./typings/require-monaco.d.ts"
+	]
+}
