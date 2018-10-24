@@ -6,7 +6,6 @@
 	"icon": "icon.png",
 	"publisher": "vscode",
 	"aiKey": "***REMOVED***",
-	"enableProposedApi": true,
 	"engines": {
 		"vscode": "^1.20.0"
 	},
