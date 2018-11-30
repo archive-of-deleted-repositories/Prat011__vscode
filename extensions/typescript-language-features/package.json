@@ -10,7 +10,7 @@
   "aiKey": "***REMOVED***",
   "enableProposedApi": true,
   "engines": {
-    "vscode": "*"
+    "vscode": "^1.30.0"
   },
   "categories": [
     "Programming Languages"
