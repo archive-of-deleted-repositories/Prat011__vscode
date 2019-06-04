@@ -1,0 +1,28 @@
+{
+  "name": "git-ui",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "publisher": "vscode",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "extensionKind": "ui",
+  "aiKey": "***REMOVED***",
+  "enableProposedApi": true,
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:git.credential"
+  ],
+  "main": "./out/main",
+  "icon": "resources/icons/git.png",
+  "scripts": {
+    "compile": "gulp compile-extension:git-ui",
+    "watch": "gulp watch-extension:git-ui"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21"
+  }
+}
