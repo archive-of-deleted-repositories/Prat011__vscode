@@ -5,6 +5,7 @@
   "description": "%description%",
   "icon": "resources/icons/merge-conflict.png",
   "version": "1.0.0",
+  "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
     "vscode": "^1.5.0"
