@@ -5,6 +5,7 @@
   "description": "%description%",
   "version": "1.0.0",
   "publisher": "vscode",
+  "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
     "vscode": "0.10.x"
@@ -180,6 +181,6 @@
     "vscode-nls": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^10.12.21"
+    "@types/node": "^10.14.8"
   }
 }
