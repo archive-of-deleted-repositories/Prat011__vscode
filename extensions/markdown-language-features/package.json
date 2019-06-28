@@ -4,7 +4,8 @@
 	"description": "%description%",
 	"version": "1.0.0",
 	"icon": "icon.png",
-	"publisher": "vscode",
+  "publisher": "vscode",
+  "enableProposedApi": true,
 	"license": "MIT",
 	"aiKey": "***REMOVED***",
 	"engines": {
