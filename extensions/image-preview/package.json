@@ -2,8 +2,10 @@
   "name": "image-preview",
   "displayName": "%displayName%",
   "description": "%description%",
+  "extensionKind": "ui",
   "version": "1.0.0",
   "publisher": "vscode",
+  "icon": "icon.png",
   "enableProposedApi": true,
   "license": "MIT",
   "aiKey": "***REMOVED***",
@@ -24,7 +26,8 @@
         "displayName": "%webviewEditors.displayName%",
         "selector": [
           {
-            "filenamePattern": "*.{jpg,jpe,jpeg,png,bmp,gif,ico,tga,tif,tiff,webp}"
+            "filenamePattern": "*.{jpg,jpe,jpeg,png,bmp,gif,ico,tga,webp}",
+            "mime": "image/*"
           }
         ]
       }
