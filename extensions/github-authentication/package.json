@@ -14,9 +14,6 @@
   "activationEvents": [
     "*"
   ],
-  "extensionDependencies": [
-    "vscode.git"
-  ],
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
   "scripts": {
