@@ -14,6 +14,22 @@
   "activationEvents": [
     "*"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "github.provide-token",
+        "title": "Manually Provide Token"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "github.provide-token",
+          "when": "false"
+        }
+      ]
+    }
+  },
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
   "scripts": {
