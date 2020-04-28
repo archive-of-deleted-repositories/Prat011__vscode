@@ -17,18 +17,6 @@
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "microsoft.signin",
-				"title": "%signIn%",
-				"category": "%displayName%"
-			},
-			{
-				"command": "microsoft.signout",
-				"title": "%signOut%",
-				"category": "%displayName%"
-			}
-		],
 		"configuration": {
 			"title": "Microsoft Account",
 			"properties": {
