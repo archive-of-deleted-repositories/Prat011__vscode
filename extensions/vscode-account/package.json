@@ -16,21 +16,6 @@
 	],
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
-	"contributes": {
-		"configuration": {
-			"title": "Microsoft Account",
-			"properties": {
-				"microsoftAccount.logLevel": {
-					"type": "string",
-					"enum": [
-						"info",
-						"trace"
-					],
-					"default": "info"
-				}
-			}
-		}
-	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "gulp compile-extension:vscode-account",
