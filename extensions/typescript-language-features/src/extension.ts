@@ -5,6 +5,7 @@
 
 import * as rimraf from 'rimraf';
 import * as vscode from 'vscode';
+import { NodeLogDirectoryProvider } from './tsServer/logDirectoryProvider.electron';
 import { Api, getExtensionApi } from './api';
 import { registerCommands } from './commands/index';
 import { LanguageConfigurationManager } from './features/languageConfiguration';
@@ -13,7 +14,6 @@ import { createLazyClientHost, lazilyActivateClient } from './lazyClientHost';
 import { NodeRequestCanceller } from './tsServer/cancellation.electron';
 import { CommandManager } from './utils/commandManager';
 import * as electron from './utils/electron';
-import { NodeLogDirectoryProvider } from './utils/logDirectoryProvider.electron';
 import { PluginManager } from './utils/plugins';
 
 export function activate(
