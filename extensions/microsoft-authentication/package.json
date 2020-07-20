@@ -12,7 +12,8 @@
 	],
 	"enableProposedApi": true,
 	"activationEvents": [
-		"*"
+		"*",
+		"onAuthenticationRequest:microsoft"
 	],
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
