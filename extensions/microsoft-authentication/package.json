@@ -15,6 +15,10 @@
 		"*",
 		"onAuthenticationRequest:microsoft"
 	],
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
 	"browser": "./dist/browser/extension.js",
