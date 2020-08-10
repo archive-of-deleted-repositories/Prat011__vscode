@@ -12,7 +12,13 @@
 	],
 	"enableProposedApi": true,
 	"activationEvents": [
-		"*"
+		"*",
+		"onAuthenticationRequest:microsoft"
+	],
+	"extensionKind": [
+		"ui",
+		"workspace",
+		"web"
 	],
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
