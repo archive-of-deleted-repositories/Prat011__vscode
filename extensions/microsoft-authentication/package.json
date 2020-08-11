@@ -17,7 +17,8 @@
 	],
 	"extensionKind": [
 		"ui",
-		"workspace"
+		"workspace",
+		"web"
 	],
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
