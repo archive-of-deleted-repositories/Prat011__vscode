@@ -132,6 +132,13 @@ export interface CommitOptions {
 	empty?: boolean;
 }
 
+export interface BranchQuery {
+	readonly remote?: boolean;
+	readonly pattern?: string;
+	readonly count?: number;
+	readonly contains?: string;
+}
+
 export interface Repository {
 
 	readonly rootUri: Uri;
@@ -171,6 +178,7 @@ export interface Repository {
 	createBranch(name: string, checkout: boolean, ref?: string): Promise<void>;
 	deleteBranch(name: string, force?: boolean): Promise<void>;
 	getBranch(name: string): Promise<Branch>;
+	getBranches(query: BranchQuery): Promise<Ref[]>;
 	setBranchUpstream(name: string, upstream: string): Promise<void>;
 
 	getMergeBase(ref1: string, ref2: string): Promise<string>;
@@ -203,6 +211,7 @@ export interface RemoteSourceProvider {
 	readonly icon?: string; // codicon name
 	readonly supportsQuery?: boolean;
 	getRemoteSources(query?: string): ProviderResult<RemoteSource[]>;
+	publishRepository?(repository: Repository): Promise<void>;
 }
 
 export interface Credentials {
@@ -212,6 +221,10 @@ export interface Credentials {
 
 export interface CredentialsProvider {
 	getCredentials(host: Uri): ProviderResult<Credentials>;
+}
+
+export interface PushErrorHandler {
+	handlePushError(repository: Repository, remote: Remote, refspec: string, error: Error & { gitErrorCode: GitErrorCodes }): Promise<boolean>;
 }
 
 export type APIState = 'uninitialized' | 'initialized';
@@ -230,6 +243,7 @@ export interface API {
 
 	registerRemoteSourceProvider(provider: RemoteSourceProvider): Disposable;
 	registerCredentialsProvider(provider: CredentialsProvider): Disposable;
+	registerPushErrorHandler(handler: PushErrorHandler): Disposable;
 }
 
 export interface GitExtension {
@@ -267,6 +281,7 @@ export const enum GitErrorCodes {
 	CantOpenResource = 'CantOpenResource',
 	GitNotFound = 'GitNotFound',
 	CantCreatePipe = 'CantCreatePipe',
+	PermissionDenied = 'PermissionDenied',
 	CantAccessRemote = 'CantAccessRemote',
 	RepositoryNotFound = 'RepositoryNotFound',
 	RepositoryIsLocked = 'RepositoryIsLocked',
