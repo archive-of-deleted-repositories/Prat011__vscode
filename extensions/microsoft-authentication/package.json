@@ -12,7 +12,6 @@
 	],
 	"enableProposedApi": true,
 	"activationEvents": [
-		"*",
 		"onAuthenticationRequest:microsoft"
 	],
 	"extensionKind": [
@@ -20,6 +19,14 @@
 		"workspace",
 		"web"
 	],
+	"contributes": {
+		"authentication": [
+			{
+				"label": "Microsoft",
+				"id": "microsoft"
+			}
+		]
+	},
 	"aiKey": "***REMOVED***",
 	"main": "./out/extension.js",
 	"browser": "./dist/browser/extension.js",
