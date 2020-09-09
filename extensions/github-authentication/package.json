@@ -11,14 +11,13 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "*",
-    "onAuthenticationRequest:github"
-  ],
   "extensionKind": [
     "ui",
     "workspace",
     "web"
+  ],
+  "activationEvents": [
+    "onAuthenticationRequest:github"
   ],
   "contributes": {
     "commands": [
@@ -34,7 +33,13 @@
           "when": "false"
         }
       ]
-    }
+    },
+    "authentication": [
+      {
+        "label": "GitHub",
+        "id": "github"
+      }
+    ]
   },
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
