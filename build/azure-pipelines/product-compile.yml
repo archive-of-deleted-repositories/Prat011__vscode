@@ -70,25 +70,12 @@ steps:
       vstsFeed: "npm-vscode"
     condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'))
 
+  # TODO@Joao: remove
   - script: |
       set -e
-      export CHILD_CONCURRENCY="1"
-      for i in {1..3}; do # try 3 times, for Terrapin
-        yarn --frozen-lockfile && break
-        if [ $i -eq 3 ]; then
-          echo "Yarn failed too many times" >&2
-          exit 1
-        fi
-        echo "Yarn failed $i, trying again..."
-      done
-    displayName: Install dependencies
-    condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'), ne(variables['CacheRestored'], 'true'))
-
-  - task: 1ESLighthouseEng.PipelineArtifactCaching.SaveCacheV1.SaveCache@1
-    inputs:
-      keyfile: ".build/arch, .build/terrapin, build/.cachesalt, .yarnrc, remote/.yarnrc, **/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock"
-      targetfolder: "**/node_modules, !**/node_modules/**/node_modules"
-      vstsFeed: "npm-vscode"
+      echo "Restore cache should not have failed"
+      exit 1
+    displayName: Check cache restore
     condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'), ne(variables['CacheRestored'], 'true'))
 
   - script: |
@@ -103,27 +90,6 @@ steps:
       node build/azure-pipelines/mixin
     displayName: Mix in quality
     condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'))
-
-  - script: |
-      set -e
-      yarn gulp hygiene
-      yarn monaco-compile-check
-      yarn valid-layers-check
-    displayName: Run hygiene, monaco compile & valid layers checks
-    condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'), eq(variables['VSCODE_STEP_ON_IT'], 'false'))
-
-  - script: |
-      set -
-      ./build/azure-pipelines/common/extract-telemetry.sh
-    displayName: Extract Telemetry
-    condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'), ne(variables['VSCODE_PUBLISH'], 'false'))
-
-  - script: |
-      set -e
-      AZURE_WEBVIEW_STORAGE_ACCESS_KEY="$(vscode-webview-storage-key)" \
-      ./build/azure-pipelines/common/publish-webview.sh
-    displayName: Publish Webview
-    condition: and(succeeded(), ne(variables['CacheExists-Compilation'], 'true'), ne(variables['VSCODE_PUBLISH'], 'false'))
 
   - script: |
       set -e
