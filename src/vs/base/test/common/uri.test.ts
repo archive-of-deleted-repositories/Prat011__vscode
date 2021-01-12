@@ -444,8 +444,7 @@ suite('URI', () => {
 		assert.equal(URI.parse('file://some/%A0.txt'), 'file://some/%25A0.txt');
 	});
 
-	test('Links in markdown are broken if url contains encoded parameters #79474', function () {
-		this.skip();
+	test.skip('Links in markdown are broken if url contains encoded parameters #79474', function () {
 		let strIn = 'https://myhost.com/Redirect?url=http%3A%2F%2Fwww.bing.com%3Fsearch%3Dtom';
 		let uri1 = URI.parse(strIn);
 		let strOut = uri1.toString();
@@ -459,8 +458,7 @@ suite('URI', () => {
 		assert.equal(strIn, strOut); // fails here!!
 	});
 
-	test('Uri#parse can break path-component #45515', function () {
-		this.skip();
+	test.skip('Uri#parse can break path-component #45515', function () {
 		let strIn = 'https://firebasestorage.googleapis.com/v0/b/brewlangerie.appspot.com/o/products%2FzVNZkudXJyq8bPGTXUxx%2FBetterave-Sesame.jpg?alt=media&token=***REMOVED***';
 		let uri1 = URI.parse(strIn);
 		let strOut = uri1.toString();
