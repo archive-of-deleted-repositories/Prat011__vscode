@@ -34,13 +34,7 @@
           "when": "false"
         }
       ]
-    },
-    "authentication": [
-      {
-        "label": "GitHub",
-        "id": "github"
-      }
-    ]
+    }
   },
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
