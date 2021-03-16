@@ -9,7 +9,9 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enableProposedApi": true,
-  "requiresWorkspaceTrust": "onDemand",
+  "workspaceTrust": {
+    "required": "onDemand"
+  },
   "engines": {
     "vscode": "^1.30.0"
   },
