@@ -14,7 +14,7 @@ import { ICommandService } from 'vs/platform/commands/common/commands';
 import { IProductService } from 'vs/platform/product/common/productService';
 import { IGettingStartedCategory, IGettingStartedCategoryDescriptor, IGettingStartedCategoryWithProgress, IGettingStartedService } from 'vs/workbench/contrib/welcome/gettingStarted/browser/gettingStartedService';
 import { IThemeService, registerThemingParticipant, ThemeIcon } from 'vs/platform/theme/common/themeService';
-import { welcomePageBackground, welcomePageProgressBackground, welcomePageProgressForeground, welcomePageTileBackground, welcomePageTileHoverBackground } from 'vs/workbench/contrib/welcome/page/browser/welcomePageColors';
+import { welcomePageBackground, welcomePageProgressBackground, welcomePageProgressForeground, welcomePageTileBackground, welcomePageTileHoverBackground, welcomePageTileShadow } from 'vs/workbench/contrib/welcome/page/browser/welcomePageColors';
 import { activeContrastBorder, buttonBackground, buttonForeground, buttonHoverBackground, contrastBorder, descriptionForeground, focusBorder, foreground, textLinkActiveForeground, textLinkForeground } from 'vs/platform/theme/common/colorRegistry';
 import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
 import { ITelemetryService } from 'vs/platform/telemetry/common/telemetry';
@@ -214,6 +214,10 @@ export class GettingStartedPage extends EditorPane {
 							this.commandService.executeCommand('workbench.action.openRecent');
 							break;
 						}
+						case 'configureVisibility': {
+							this.commandService.executeCommand('workbench.action.openSettings', hiddenEntriesConfigurationKey);
+							break;
+						}
 						case 'openFolder': {
 							this.commandService.executeCommand(isMacintosh ? 'workbench.action.files.openFileFolder' : 'workbench.action.files.openFolder');
 							break;
@@ -403,6 +407,13 @@ export class GettingStartedPage extends EditorPane {
 			categoriesContainer.appendChild(element);
 		});
 
+		categoriesContainer.appendChild(
+			$('.no-categories', {},
+				localize('no categories', "No remaining walkthroughs."),
+				$('button.button-link', { 'x-dispatch': 'configureVisibility' }, localize('configure visiblity', "Configure visibility?")))
+		);
+
+
 		categoryScrollContainer.appendChild(categoriesContainer);
 
 		if (this.categoriesScrollbar) { this.categoriesScrollbar.dispose(); }
@@ -502,21 +513,20 @@ export class GettingStartedPage extends EditorPane {
 
 			const { name, parentPath } = splitName(fullPath);
 
-			const li = document.createElement('li');
-			const a = document.createElement('a');
+			const li = $('li');
+			const link = $('button.button-link');
 
-			a.innerText = name;
-			a.title = fullPath;
-			a.setAttribute('aria-label', localize('welcomePage.openFolderWithPath', "Open folder {0} with path {1}", name, parentPath));
-			a.href = 'javascript:void(0)';
-			a.addEventListener('click', e => {
+			link.innerText = name;
+			link.title = fullPath;
+			link.setAttribute('aria-label', localize('welcomePage.openFolderWithPath', "Open folder {0} with path {1}", name, parentPath));
+			link.addEventListener('click', e => {
 				this.hostService.openWindow([windowOpenable], { forceNewWindow: e.ctrlKey || e.metaKey, remoteAuthority: recent.remoteAuthority });
 				e.preventDefault();
 				e.stopPropagation();
 			});
-			li.appendChild(a);
+			li.appendChild(link);
 
-			const span = document.createElement('span');
+			const span = $('span');
 			span.classList.add('path');
 			span.classList.add('detail');
 			span.innerText = parentPath;
@@ -795,12 +805,14 @@ export class GettingStartedPage extends EditorPane {
 			slideManager.classList.add('showCategories');
 			this.container.querySelector('.gettingStartedSlideDetails')!.querySelectorAll('button').forEach(button => button.disabled = true);
 			this.container.querySelector('.gettingStartedSlideCategory')!.querySelectorAll('button').forEach(button => button.disabled = false);
+			this.container.querySelector('.gettingStartedSlideCategory')!.querySelectorAll('input').forEach(button => button.disabled = false);
 			this.container.focus();
 		} else {
 			slideManager.classList.add('showDetails');
 			slideManager.classList.remove('showCategories');
 			this.container.querySelector('.gettingStartedSlideDetails')!.querySelectorAll('button').forEach(button => button.disabled = false);
 			this.container.querySelector('.gettingStartedSlideCategory')!.querySelectorAll('button').forEach(button => button.disabled = true);
+			this.container.querySelector('.gettingStartedSlideCategory')!.querySelectorAll('input').forEach(button => button.disabled = true);
 		}
 	}
 }
@@ -851,6 +863,11 @@ registerThemingParticipant((theme, collector) => {
 	const buttonColor = theme.getColor(welcomePageTileBackground);
 	if (buttonColor) {
 		collector.addRule(`.monaco-workbench .part.editor > .content .gettingStartedContainer button { background: ${buttonColor}; }`);
+	}
+
+	const shadowColor = theme.getColor(welcomePageTileShadow);
+	if (shadowColor) {
+		collector.addRule(`.monaco-workbench .part.editor > .content .gettingStartedContainer .gettingStartedSlide.categories .getting-started-category { filter: drop-shadow(2px 2px 2px ${buttonColor}); }`);
 	}
 
 	const buttonHoverColor = theme.getColor(welcomePageTileHoverBackground);
