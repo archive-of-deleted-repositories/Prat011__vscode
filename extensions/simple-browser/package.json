@@ -4,7 +4,7 @@
   "description": "%description%",
   "enableProposedApi": true,
   "version": "1.0.0",
-  "icon": "icon.png",
+  "icon": "media/icon.png",
   "publisher": "vscode",
   "license": "MIT",
   "aiKey": "***REMOVED***",
