@@ -9,6 +9,7 @@
   "aiKey": "***REMOVED***",
   "enableProposedApi": true,
   "capabilities": {
+    "virtualWorkspaces": true,
     "untrustedWorkspaces": {
       "supported": "limited",
       "description": "%workspaceTrust%",
