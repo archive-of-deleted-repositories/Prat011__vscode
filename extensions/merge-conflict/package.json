@@ -3,7 +3,7 @@
   "publisher": "vscode",
   "displayName": "%displayName%",
   "description": "%description%",
-  "icon": "resources/icons/merge-conflict.png",
+  "icon": "media/icon.png",
   "version": "1.0.0",
   "license": "MIT",
   "aiKey": "***REMOVED***",
@@ -13,6 +13,12 @@
   "categories": [
     "Other"
   ],
+  "capabilities": {
+    "virtualWorkspaces": false,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "activationEvents": [
     "onStartupFinished"
   ],
