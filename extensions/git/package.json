@@ -9,7 +9,13 @@
     "vscode": "^1.5.0"
   },
   "aiKey": "***REMOVED***",
-  "enableProposedApi": true,
+  "enabledApiProposals": [
+    "diffCommand",
+    "scmActionButton",
+    "scmSelectedProvider",
+    "scmValidation",
+    "timeline"
+  ],
   "categories": [
     "Other"
   ],
