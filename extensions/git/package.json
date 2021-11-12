@@ -11,6 +11,7 @@
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
     "diffCommand",
+    "contribViewsWelcome",
     "scmActionButton",
     "scmSelectedProvider",
     "scmValidation",
