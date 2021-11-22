@@ -9,7 +9,6 @@
   "version": "1.0.0",
   "publisher": "vscode",
   "icon": "icon.png",
-  "enableProposedApi": true,
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
