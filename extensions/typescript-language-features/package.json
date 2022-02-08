@@ -9,7 +9,6 @@
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
     "inlayHints",
-    "languageStatus",
     "markdownStringBaseUri",
     "resolvers",
     "workspaceTrust"
