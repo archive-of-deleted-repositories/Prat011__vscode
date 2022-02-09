@@ -8,7 +8,6 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "inlayHints",
     "markdownStringBaseUri",
     "resolvers",
     "workspaceTrust"
