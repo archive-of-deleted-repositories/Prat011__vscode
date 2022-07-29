@@ -109,7 +109,8 @@ export class LoopbackAuthServer implements ILoopbackServer {
 				case '/callback': {
 					const code = reqUrl.searchParams.get('code') ?? undefined;
 					const state = reqUrl.searchParams.get('state') ?? undefined;
-					if (!code || !state) {
+					const nonce = (reqUrl.searchParams.get('nonce') ?? '').replace(/ /g, '+');
+					if (!code || !state || !nonce) {
 						res.writeHead(400);
 						res.end();
 						return;
@@ -118,6 +119,11 @@ export class LoopbackAuthServer implements ILoopbackServer {
 						res.writeHead(302, { location: `/?error=${encodeURIComponent('State does not match.')}` });
 						res.end();
 						throw new Error('State does not match.');
+					}
+					if (this.nonce !== nonce) {
+						res.writeHead(302, { location: `/?error=${encodeURIComponent('Nonce does not match.')}` });
+						res.end();
+						throw new Error('Nonce does not match.');
 					}
 					deferred.resolve({ code, state });
 					res.writeHead(302, { location: '/' });
@@ -155,6 +161,10 @@ export class LoopbackAuthServer implements ILoopbackServer {
 				}
 
 				clearTimeout(portTimeout);
+
+				// set state which will be used to redirect back to vscode
+				this.state = `http://127.0.0.1:${this.port}/callback?nonce=${encodeURIComponent(this.nonce)}`;
+
 				resolve(this.port);
 			});
 			this._server.on('error', err => {

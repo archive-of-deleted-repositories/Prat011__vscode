@@ -73,11 +73,23 @@
             }
           }
         },
+        "json.validate.enable": {
+          "type": "boolean",
+          "scope": "window",
+          "default": true,
+          "description": "%json.validate.enable.desc%"
+        },
         "json.format.enable": {
           "type": "boolean",
           "scope": "window",
           "default": true,
           "description": "%json.format.enable.desc%"
+        },
+        "json.format.keepLines": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "description": "%json.format.keepLines.desc%"
         },
         "json.trace.server": {
           "type": "string",
@@ -141,10 +153,10 @@
     ]
   },
   "dependencies": {
-    "request-light": "^0.5.7",
-    "@vscode/extension-telemetry": "0.4.6",
-    "vscode-languageclient": "^7.0.0",
-    "vscode-nls": "^5.0.0"
+    "@vscode/extension-telemetry": "0.6.2",
+    "request-light": "^0.5.8",
+    "vscode-languageclient": "^8.0.2-next.5",
+    "vscode-nls": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "16.x"
