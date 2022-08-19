@@ -14,6 +14,9 @@
     "onLanguage:html",
     "onLanguage:handlebars"
   ],
+  "enabledApiProposals": [
+    "extensionsAny"
+  ],
   "main": "./client/out/node/htmlClientMain",
   "browser": "./client/dist/browser/htmlClientMain",
   "capabilities": {
@@ -118,12 +121,6 @@
           "scope": "resource",
           "default": false,
           "markdownDescription": "%html.format.indentHandlebars.desc%"
-        },
-        "html.format.endWithNewline": {
-          "type": "boolean",
-          "scope": "resource",
-          "default": false,
-          "description": "%html.format.endWithNewline.desc%"
         },
         "html.format.extraLiners": {
           "type": [
@@ -263,7 +260,7 @@
   "dependencies": {
     "@vscode/extension-telemetry": "0.5.1",
     "vscode-languageclient": "^8.0.2-next.4",
-    "vscode-nls": "^5.0.1",
+    "vscode-nls": "^5.1.0",
     "vscode-uri": "^3.0.3"
   },
   "devDependencies": {
