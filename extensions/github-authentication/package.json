@@ -48,6 +48,9 @@
       }
     }
   },
+  "enabledApiProposals": [
+    "extensionLog"
+  ],
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
   "browser": "./dist/browser/extension.js",
