@@ -9,8 +9,7 @@
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
     "resolvers",
-    "workspaceTrust",
-    "workspaceEditIsRefactoring"
+    "workspaceTrust"
   ],
   "capabilities": {
     "virtualWorkspaces": {
