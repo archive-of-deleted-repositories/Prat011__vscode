@@ -11,7 +11,7 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.70.0"
   },
   "main": "./out/extension",
   "browser": "./dist/browser/extension",
@@ -67,8 +67,7 @@
     "watch-web": "npx webpack-cli --config extension-browser.webpack.config --mode none --watch --info-verbosity verbose"
   },
   "dependencies": {
-    "@vscode/extension-telemetry": "0.6.2",
-    "vscode-nls": "^5.0.0"
+    "@vscode/extension-telemetry": "0.6.2"
   },
   "devDependencies": {
     "@types/vscode-webview": "^1.57.0",
