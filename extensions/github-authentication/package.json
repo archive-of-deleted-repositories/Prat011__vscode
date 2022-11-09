@@ -52,8 +52,7 @@
     }
   },
   "enabledApiProposals": [
-    "telemetryLogger",
-    "extensionLog"
+    "telemetryLogger"
   ],
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
