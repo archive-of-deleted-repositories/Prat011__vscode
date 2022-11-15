@@ -8,6 +8,7 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
+    "telemetryLogger",
     "resolvers",
     "workspaceTrust"
   ],
@@ -34,10 +35,9 @@
     "Programming Languages"
   ],
   "dependencies": {
-    "@vscode/extension-telemetry": "0.6.2",
+    "@vscode/extension-telemetry": "0.7.1-preview",
     "jsonc-parser": "^2.2.1",
     "semver": "5.5.1",
-    "vscode-nls": "^5.2.0",
     "vscode-tas-client": "^0.1.63",
     "vscode-uri": "^3.0.3"
   },
