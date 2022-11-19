@@ -9,6 +9,9 @@
   "engines": {
     "vscode": "0.10.x"
   },
+  "enabledApiProposals": [
+    "telemetryLogger"
+  ],
   "icon": "icons/json.png",
   "activationEvents": [
     "onLanguage:json",
@@ -73,11 +76,23 @@
             }
           }
         },
+        "json.validate.enable": {
+          "type": "boolean",
+          "scope": "window",
+          "default": true,
+          "description": "%json.validate.enable.desc%"
+        },
         "json.format.enable": {
           "type": "boolean",
           "scope": "window",
           "default": true,
           "description": "%json.format.enable.desc%"
+        },
+        "json.format.keepLines": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "description": "%json.format.keepLines.desc%"
         },
         "json.trace.server": {
           "type": "string",
@@ -141,10 +156,9 @@
     ]
   },
   "dependencies": {
-    "request-light": "^0.5.7",
-    "@vscode/extension-telemetry": "0.4.10",
-    "vscode-languageclient": "^7.0.0",
-    "vscode-nls": "^5.0.0"
+    "@vscode/extension-telemetry": "0.7.1-preview",
+    "request-light": "^0.5.8",
+    "vscode-languageclient": "^8.1.0-next.1"
   },
   "devDependencies": {
     "@types/node": "16.x"
