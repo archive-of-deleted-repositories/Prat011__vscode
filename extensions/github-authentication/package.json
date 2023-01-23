@@ -48,9 +48,6 @@
       }
     }
   },
-  "enabledApiProposals": [
-    "telemetryLogger"
-  ],
   "aiKey": "***REMOVED***",
   "main": "./out/extension.js",
   "browser": "./dist/browser/extension.js",

@@ -10,7 +10,6 @@
   },
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "telemetryLogger",
     "diffCommand",
     "contribEditorContentMenu",
     "contribEditSessions",
