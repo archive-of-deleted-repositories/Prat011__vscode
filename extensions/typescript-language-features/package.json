@@ -8,7 +8,7 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "workspaceTrust", "interactive"
+    "workspaceTrust"
   ],
   "capabilities": {
     "virtualWorkspaces": {
