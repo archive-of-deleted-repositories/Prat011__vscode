@@ -8,8 +8,9 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "mappedEditsProvider",
-    "workspaceTrust"
+    "workspaceTrust",
+    "multiDocumentHighlightProvider",
+    "mappedEditsProvider"
   ],
   "capabilities": {
     "virtualWorkspaces": {
