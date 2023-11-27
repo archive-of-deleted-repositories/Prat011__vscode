@@ -8,7 +8,9 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "workspaceTrust"
+    "workspaceTrust",
+    "multiDocumentHighlightProvider",
+    "mappedEditsProvider"
   ],
   "capabilities": {
     "virtualWorkspaces": {
@@ -51,7 +53,7 @@
   "scripts": {
     "vscode:prepublish": "node ../../node_modules/gulp/bin/gulp.js --gulpfile ../../build/gulpfile.extensions.js compile-extension:typescript-language-features",
     "compile-web": "npx webpack-cli --config extension-browser.webpack.config --mode none",
-    "watch-web": "npx webpack-cli --config extension-browser.webpack.config --mode none --watch --info-verbosity verbose"
+    "watch-web": "npx webpack-cli --config extension-browser.webpack.config --mode none --watch"
   },
   "activationEvents": [
     "onLanguage:javascript",
@@ -257,6 +259,12 @@
           "type": "boolean",
           "default": false,
           "description": "%typescript.implementationsCodeLens.enabled%",
+          "scope": "window"
+        },
+        "typescript.implementationsCodeLens.showOnInterfaceMethods": {
+          "type": "boolean",
+          "default": false,
+          "description": "%typescript.implementationsCodeLens.showOnInterfaceMethods%",
           "scope": "window"
         },
         "typescript.tsserver.enableTracing": {
