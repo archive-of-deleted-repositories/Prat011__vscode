@@ -1,5 +1,4 @@
 {
-  "enableProposedApi": true,
   "name": "html-language-features",
   "displayName": "%displayName%",
   "description": "%description%",
@@ -8,12 +7,15 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
-    "vscode": "0.10.x"
+    "vscode": "^1.77.0"
   },
   "icon": "icons/html.png",
   "activationEvents": [
     "onLanguage:html",
     "onLanguage:handlebars"
+  ],
+  "enabledApiProposals": [
+    "extensionsAny"
   ],
   "main": "./client/out/node/htmlClientMain",
   "browser": "./client/dist/browser/htmlClientMain",
@@ -38,6 +40,22 @@
       "type": "object",
       "title": "HTML",
       "properties": {
+        "html.completion.attributeDefaultValue": {
+          "type": "string",
+          "scope": "resource",
+          "enum": [
+            "doublequotes",
+            "singlequotes",
+            "empty"
+          ],
+          "enumDescriptions": [
+            "%html.completion.attributeDefaultValue.doublequotes%",
+            "%html.completion.attributeDefaultValue.singlequotes%",
+            "%html.completion.attributeDefaultValue.empty%"
+          ],
+          "default": "doublequotes",
+          "markdownDescription": "%html.completion.attributeDefaultValue%"
+        },
         "html.customData": {
           "type": "array",
           "markdownDescription": "%html.customData.desc%",
@@ -104,12 +122,6 @@
           "default": false,
           "markdownDescription": "%html.format.indentHandlebars.desc%"
         },
-        "html.format.endWithNewline": {
-          "type": "boolean",
-          "scope": "resource",
-          "default": false,
-          "description": "%html.format.endWithNewline.desc%"
-        },
         "html.format.extraLiners": {
           "type": [
             "string",
@@ -150,7 +162,7 @@
           ],
           "scope": "resource",
           "default": null,
-          "description": "%html.format.wrapAttributesIndentSize.desc%"
+          "markdownDescription": "%html.format.wrapAttributesIndentSize.desc%"
         },
         "html.format.templating": {
           "type": "boolean",
@@ -181,6 +193,12 @@
           "scope": "resource",
           "default": true,
           "description": "%html.validate.styles%"
+        },
+        "html.autoCreateQuotes": {
+          "type": "boolean",
+          "scope": "resource",
+          "default": true,
+          "description": "%html.autoCreateQuotes%"
         },
         "html.autoClosingTags": {
           "type": "boolean",
@@ -240,12 +258,12 @@
     ]
   },
   "dependencies": {
-    "vscode-extension-telemetry": "0.1.7",
-    "vscode-languageclient": "^7.0.0",
-    "vscode-nls": "^5.0.0"
+    "@vscode/extension-telemetry": "^0.9.0",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-uri": "^3.0.8"
   },
   "devDependencies": {
-    "@types/node": "14.x"
+    "@types/node": "18.x"
   },
   "repository": {
     "type": "git",

@@ -23,29 +23,70 @@
   "browser": "./dist/browser/extension",
   "activationEvents": [],
   "contributes": {
+    "languages": [
+      {
+        "id": "markdown-math",
+        "aliases": []
+      }
+    ],
+    "grammars": [
+      {
+        "language": "markdown-math",
+        "scopeName": "text.html.markdown.math",
+        "path": "./syntaxes/md-math.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.math.block",
+        "path": "./syntaxes/md-math-block.tmLanguage.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.math.markdown": "latex"
+        }
+      },
+      {
+        "scopeName": "markdown.math.inline",
+        "path": "./syntaxes/md-math-inline.tmLanguage.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.math.markdown": "latex",
+          "punctuation.definition.math.end.markdown": "latex"
+        }
+      }
+    ],
     "notebookRenderer": [
       {
-        "id": "markdownItRenderer-katex",
+        "id": "vscode.markdown-it-katex-extension",
         "displayName": "Markdown it KaTeX renderer",
         "entrypoint": {
-          "extends": "markdownItRenderer",
+          "extends": "vscode.markdown-it-renderer",
           "path": "./notebook-out/katex.js"
         }
       }
     ],
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": [
-      "./node_modules/katex/dist/katex.min.css",
+      "./notebook-out/katex.min.css",
       "./preview-styles/index.css"
     ],
     "configuration": [
       {
-        "title": "Markdown",
+        "title": "Markdown Math",
         "properties": {
           "markdown.math.enabled": {
             "type": "boolean",
             "default": true,
             "description": "%config.markdown.math.enabled%"
+          },
+          "markdown.math.macros": {
+            "type": "object",
+            "additionalProperties": { "type": "string" },
+            "default": {},
+            "description": "%config.markdown.math.macros%",
+            "scope": "resource"
           }
         }
       }
@@ -57,10 +98,11 @@
     "build-notebook": "node ./esbuild"
   },
   "dependencies": {
-    "@iktakahiro/markdown-it-katex": "https://github.com/mjbvz/markdown-it-katex.git"
+    "@vscode/markdown-it-katex": "^1.0.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "^0.0.0"
+    "@types/markdown-it": "^0.0.0",
+    "@types/vscode-notebook-renderer": "^1.60.0"
   },
   "repository": {
     "type": "git",
