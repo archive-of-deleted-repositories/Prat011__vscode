@@ -8,8 +8,9 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
-    "mappedEditsProvider",
-    "workspaceTrust"
+    "workspaceTrust",
+    "multiDocumentHighlightProvider",
+    "mappedEditsProvider"
   ],
   "capabilities": {
     "virtualWorkspaces": {
@@ -52,7 +53,7 @@
   "scripts": {
     "vscode:prepublish": "node ../../node_modules/gulp/bin/gulp.js --gulpfile ../../build/gulpfile.extensions.js compile-extension:typescript-language-features",
     "compile-web": "npx webpack-cli --config extension-browser.webpack.config --mode none",
-    "watch-web": "npx webpack-cli --config extension-browser.webpack.config --mode none --watch --info-verbosity verbose"
+    "watch-web": "npx webpack-cli --config extension-browser.webpack.config --mode none --watch"
   },
   "activationEvents": [
     "onLanguage:javascript",
