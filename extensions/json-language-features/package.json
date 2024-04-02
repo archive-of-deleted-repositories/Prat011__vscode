@@ -7,16 +7,19 @@
   "license": "MIT",
   "aiKey": "***REMOVED***",
   "engines": {
-    "vscode": "0.10.x"
+    "vscode": "^1.77.0"
   },
+  "enabledApiProposals": [
+    "extensionsAny"
+  ],
   "icon": "icons/json.png",
   "activationEvents": [
     "onLanguage:json",
-    "onLanguage:jsonc"
+    "onLanguage:jsonc",
+    "onLanguage:snippets"
   ],
   "main": "./client/out/node/jsonClientMain",
   "browser": "./client/dist/browser/jsonClientMain",
-  "enableProposedApi": true,
   "capabilities": {
     "virtualWorkspaces": true,
     "untrustedWorkspaces": {
@@ -73,11 +76,23 @@
             }
           }
         },
+        "json.validate.enable": {
+          "type": "boolean",
+          "scope": "window",
+          "default": true,
+          "description": "%json.validate.enable.desc%"
+        },
         "json.format.enable": {
           "type": "boolean",
           "scope": "window",
           "default": true,
           "description": "%json.format.enable.desc%"
+        },
+        "json.format.keepLines": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "description": "%json.format.keepLines.desc%"
         },
         "json.trace.server": {
           "type": "string",
@@ -131,16 +146,27 @@
         "fileMatch": "*.schema.json",
         "url": "http://json-schema.org/draft-07/schema#"
       }
+    ],
+    "commands": [
+      {
+        "command": "json.clearCache",
+        "title": "%json.command.clearCache%",
+        "category": "JSON"
+      },
+      {
+        "command": "json.sort",
+        "title": "%json.command.sort%",
+        "category": "JSON"
+      }
     ]
   },
   "dependencies": {
-    "request-light": "^0.5.4",
-    "vscode-extension-telemetry": "0.4.2",
-    "vscode-languageclient": "^7.0.0",
-    "vscode-nls": "^5.0.0"
+    "@vscode/extension-telemetry": "^0.9.0",
+    "request-light": "^0.7.0",
+    "vscode-languageclient": "9.0.1"
   },
   "devDependencies": {
-    "@types/node": "14.x"
+    "@types/node": "18.x"
   },
   "repository": {
     "type": "git",
