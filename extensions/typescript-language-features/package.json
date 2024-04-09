@@ -9,6 +9,7 @@
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
     "workspaceTrust",
+    "createFileSystemWatcher",
     "multiDocumentHighlightProvider",
     "mappedEditsProvider",
     "codeActionAI",
@@ -1164,6 +1165,14 @@
           "default": false,
           "description": "%configuration.tsserver.experimental.enableProjectDiagnostics%",
           "scope": "window",
+          "tags": [
+            "experimental"
+          ]
+        },
+        "typescript.tsserver.experimental.useVsCodeWatcher": {
+          "type": "boolean",
+          "description": "%configuration.tsserver.useVsCodeWatcher%",
+          "default": false,
           "tags": [
             "experimental"
           ]
