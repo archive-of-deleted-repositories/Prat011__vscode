@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { getActiveWindow } from 'vs/base/browser/dom';
-import type { IRasterizedGlyph } from 'vs/editor/browser/view/gpu/glyphRasterizer';
+import type { IRasterizedGlyph } from 'vs/editor/browser/view/gpu/raster/glyphRasterizer';
 import { ensureNonNullable } from 'vs/editor/browser/view/gpu/gpuUtils';
 import { TwoKeyMap } from 'vs/editor/browser/view/gpu/multiKeyMap';
-import type { ITextureAtlasGlyph } from 'vs/editor/browser/view/gpu/textureAtlas';
+import type { ITextureAtlasGlyph } from 'vs/editor/browser/view/gpu/atlas/textureAtlas';
 
 export interface ITextureAtlasAllocator {
 	readonly glyphMap: TwoKeyMap<string, number, ITextureAtlasGlyph>;
