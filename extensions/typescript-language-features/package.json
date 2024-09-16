@@ -9,7 +9,6 @@
   "aiKey": "***REMOVED***",
   "enabledApiProposals": [
     "workspaceTrust",
-    "createFileSystemWatcher",
     "multiDocumentHighlightProvider",
     "mappedEditsProvider",
     "codeActionAI",
