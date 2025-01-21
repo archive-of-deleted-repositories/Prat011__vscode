@@ -46,6 +46,11 @@ type QueuedBufferEvent = (
 	ViewZonesChangedEvent
 );
 
+/**
+ * A render strategy that tracks a large buffer, uploading only dirty lines as they change and
+ * leveraging heavy caching. This is the most performant strategy but has limitations around long
+ * lines and too many lines.
+ */
 export class FullFileRenderStrategy extends BaseRenderStrategy {
 
 	/**
