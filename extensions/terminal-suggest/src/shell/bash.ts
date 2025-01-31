@@ -9,12 +9,12 @@ import { exec, spawn, type ExecOptionsWithStringEncoding } from 'node:child_proc
 
 export async function getBashGlobals(options: ExecOptionsWithStringEncoding, existingCommands?: Set<string>): Promise<(string | ICompletionResource)[]> {
 	return [
-		...await getBashAliases(options),
-		...await getBashBuiltins(options, existingCommands)
+		...await getAliases(options),
+		...await getBuiltins(options, existingCommands)
 	];
 }
 
-async function getBashBuiltins(options: ExecOptionsWithStringEncoding, existingCommands?: Set<string>): Promise<string[]> {
+async function getBuiltins(options: ExecOptionsWithStringEncoding, existingCommands?: Set<string>): Promise<string[]> {
 	const compgenOutput = await new Promise<string>((resolve, reject) => {
 		exec('compgen -b', options, (error, stdout) => {
 			if (error) {
@@ -28,7 +28,7 @@ async function getBashBuiltins(options: ExecOptionsWithStringEncoding, existingC
 	return compgenOutput.split('\n').filter(filter);
 }
 
-async function getBashAliases(options: ExecOptionsWithStringEncoding): Promise<ICompletionResource[]> {
+async function getAliases(options: ExecOptionsWithStringEncoding): Promise<ICompletionResource[]> {
 	// This must be run with interactive, otherwise there's a good chance aliases won't
 	// be set up. Note that this could differ from the actual aliases as it's a new bash
 	// session, for the same reason this would not include aliases that are created
