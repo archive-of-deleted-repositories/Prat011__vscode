@@ -50,7 +50,7 @@ async function getBashAliases(options: ExecOptionsWithStringEncoding): Promise<I
 
 	const result: ICompletionResource[] = [];
 	for (const line of aliasOutput.split('\n')) {
-		const match = line.match(/^alias (?<alias>[a-zA-Z]+)='(?<resolved>.+)'$/);
+		const match = line.match(/^alias (?<alias>[a-zA-Z0-9\.:-]+)='(?<resolved>.+)'$/);
 		if (!match?.groups) {
 			continue;
 		}
