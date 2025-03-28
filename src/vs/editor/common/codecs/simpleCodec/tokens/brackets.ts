@@ -14,7 +14,7 @@ import { Line } from '../../linesCodec/tokens/line.js';
  */
 export class LeftBracket extends BaseToken {
 	/**
-	 * The underlying symbol of the `LeftBracket` token.
+	 * The underlying symbol of the token.
 	 */
 	public static readonly symbol: string = '[';
 
@@ -58,7 +58,7 @@ export class LeftBracket extends BaseToken {
  */
 export class RightBracket extends BaseToken {
 	/**
-	 * The underlying symbol of the `RightBracket` token.
+	 * The underlying symbol of the token.
 	 */
 	public static readonly symbol: string = ']';
 
